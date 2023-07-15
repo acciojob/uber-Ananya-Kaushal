@@ -1,12 +1,12 @@
 package com.driver.model;
-
 import javax.persistence.*;
 
 @Entity
-public class Cab
-{
+@Table
+public class Cab {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     private int perKmRate;
@@ -26,7 +26,8 @@ public class Cab
         this.available = available;
     }
 
-    @OneToOne(mappedBy = "cab",cascade = CascadeType.ALL)
+
+    @OneToOne(mappedBy = "cab", cascade = CascadeType.ALL)
     private Driver driver;
 
     public Driver getDriver() {
@@ -53,7 +54,7 @@ public class Cab
         this.perKmRate = perKmRate;
     }
 
-    public boolean isAvailable() {
+    public boolean getAvailable() {
         return available;
     }
 

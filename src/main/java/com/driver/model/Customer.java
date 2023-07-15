@@ -1,24 +1,21 @@
 package com.driver.model;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table
-public class Customer
-{
+public class Customer {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int customerId;
 
     private String mobile;
-
     private String password;
+
+
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    List<TripBooking> tripBookingList=new ArrayList<>();
-    public Customer() {
-    }
+    List<TripBooking> tripBookingList = new ArrayList<>();
 
     public Customer(int customerId, String mobile, String password, List<TripBooking> tripBookingList) {
         this.customerId = customerId;
@@ -26,6 +23,7 @@ public class Customer
         this.password = password;
         this.tripBookingList = tripBookingList;
     }
+
     public List<TripBooking> getTripBookingList() {
         return tripBookingList;
     }
@@ -38,6 +36,9 @@ public class Customer
         this.customerId = customerId;
         this.mobile = mobile;
         this.password = password;
+    }
+
+    public Customer() {
     }
 
     public int getCustomerId() {
